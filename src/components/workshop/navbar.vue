@@ -39,7 +39,7 @@
                                 Accueil</router-link>
                         </li>
 
-                        <li :class="activeMenu === '/quiz' ? 'active' : ''"><router-link to="/quiz" class="sub-menu-item">
+                        <li :class="activeMenu === '/quizz' ? 'active' : ''"><router-link to="/quizz" class="sub-menu-item">
                                 Tester vos connaissances</router-link>
                         </li>
 

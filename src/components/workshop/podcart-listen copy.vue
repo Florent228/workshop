@@ -17,7 +17,7 @@
                             <p class="text-slate-400 max-w-xl">Chaque quiz est conçu pour être ludique et éducatif, avec un retour immédiat pour vous aider à mieux comprendre chaque sujet.</p>
                             
                             <div class="mt-4">
-                                <a href="" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md mt-3">Commencer un quiz </a>
+                                <a href="/quizz" class="py-2 px-5 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-md mt-3">Commencer un quiz </a>
                             </div>
                         </div>
                     </div><!--end col-->
