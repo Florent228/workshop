@@ -13,11 +13,6 @@
                                 Pour une utilisation sécurisée des réseaux sociaux.  <br>Formez-vous sur <span class="text-indigo-600">FORMACONFIANCE</span></h4>
                             <p class="text-slate-500 text-lg max-w-xl">Découvrez des ressources essentielles et des outils interactifs pour mieux comprendre et maîtriser les dangers des réseaux sociaux. Quiz, guides, et articles à votre disposition.</p>
 
-                            <div class="mt-8">
-                                <a href="#"
-                                    class="lightbox py-1.5  pe-2 inline-block font-semibold tracking-wide border align-middle duration-500 text-base text-center bg-indigo-600 hover:bg-indigo-700 border-indigo-600 hover:border-indigo-700 text-white rounded-full cursor-pointer">
-                                    Formez-vous ici</a>
-                            </div>
                         </div>
                     </div><!--end col-->
 
