@@ -19,12 +19,10 @@
             </div><!--end container-->
         </section><!--end section-->
         <!-- End -->
-        <switcher :backToTop=true />
     </div>
 </template>
 
 <script>
-import switcher from '@/components/switcher.vue'
     export default {
         data() {
             return {
@@ -32,7 +30,6 @@ import switcher from '@/components/switcher.vue'
             }
         },
         components:{
-            switcher
         }
     }
 </script>

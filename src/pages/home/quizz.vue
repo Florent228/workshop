@@ -8,8 +8,8 @@
             <div class="container relative">
                 <div class="grid grid-cols-1 pb-8 text-center mt-10">
                     <h3 class="md:text-4xl text-3xl md:leading-normal tracking-wide leading-normal font-medium text-white">POSE QUIZZ !</h3>
-                </div><!--end grid-->
-            </div><!--end container-->
+                </div>
+            </div>
             
             <div class="absolute text-center z-10 bottom-5 start-0 end-0 mx-3">
                 <ul class="tracking-[0.5px] mb-0 inline-block">
@@ -18,7 +18,8 @@
                     <li class="inline-block uppercase text-[13px] font-bold duration-500 ease-in-out text-white" aria-current="page">Quizz</li>
                 </ul>
             </div>
-        </section><!--end section-->
+        </section>
+        
         <div class="relative">
             <div class="shape absolute sm:-bottom-px -bottom-[2px] start-0 end-0 overflow-hidden z-1 text-white dark:text-slate-900">
                 <svg class="w-full h-auto scale-[2.0] origin-top" viewBox="0 0 2880 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -27,64 +28,64 @@
             </div>
         </div>
         <!-- End Hero -->
-
-        <audio ref="correctSound" src="../../assets/images/workshop/correct.mp3"></audio>
-        <audio ref="wrongSound" src="../../assets/images/workshop/wrong.mp3"></audio>
-
-
-
+        
         <div class="max-w-5xl mx-auto mt-10 p-4">
-    <!-- Barre de progression -->
-    <div class="w-full bg-gray-300 h-2 rounded-full mb-8" v-if="!quizFinished">
-        <div class="bg-blue-500 h-2 rounded-full" :style="{ width: progress + '%' }"></div>
-    </div>
 
-    <!-- Affichage des questions et réponses si le quiz n'est pas terminé -->
-    <div v-if="!quizFinished">
-        <!-- Ligne des cards (Avatar, Question, Score) avec espacement -->
-        <div class="flex justify-between items-center space-x-4 mb-8">
-            <!-- Avatar -->
-            <div class="bg-white shadow-lg p-4 rounded-lg flex items-center justify-center w-1/4 h-24">
-                <img src="../../assets/images/workshop/avatar.jpg" alt="Avatar" class="w-16 h-16 rounded-full" />
+            <audio ref="correctSound" src="../../assets/images/workshop/correct.mp3"></audio>
+            <audio ref="wrongSound" src="../../assets/images/workshop/wrong.mp3"></audio>
+
+
+            <!-- Barre de progression -->
+            <div class="w-full bg-gray-300 h-2 rounded-full mb-8" v-if="!quizFinished">
+                <div class="bg-blue-500 h-2 rounded-full" :style="{ width: progress + '%' }"></div>
             </div>
 
-            <!-- Question (grande card) -->
-            <div class="bg-white shadow-lg p-6 rounded-lg w-2/4 h-32 flex items-center justify-center">
-                <h2 class="text-2xl font-semibold text-center">{{ questions[currentQuestionIndex].text }}</h2>
+            <!-- Affichage des questions et réponses -->
+            <div v-if="!quizFinished">
+                <div class="flex justify-between items-center space-x-4 mb-8">
+
+                    <!-- Avatar -->
+                    <div class="bg-white shadow-lg p-4 rounded-lg flex items-center justify-center w-1/4 h-24">
+                        <img src="../../assets/images/workshop/avatar.jpg" alt="Avatar" class="w-16 h-16 rounded-full" />
+                    </div>
+
+                    <!-- Question -->
+                    <div class="bg-white shadow-lg p-6 rounded-lg w-2/4 h-32 flex items-center justify-center">
+                        <h2 class="text-2xl font-semibold text-center">{{ questions[currentQuestionIndex].text }}</h2>
+                    </div>
+
+                    <!-- Score -->
+                    <div class="bg-white shadow-lg p-4 rounded-lg flex items-center justify-center w-1/4 h-24">
+                        <p class="text-lg font-bold">Score : {{ score }}</p>
+                    </div>
+
+                </div>
+
+                <!-- boutton Propositions de réponses  -->
+                <div class="flex flex-col items-center">
+                    <div class="space-y-4 w-3/4">
+                        <button
+                            v-for="(answer, index) in questions[currentQuestionIndex].answers"
+                            :key="index"
+                            @click="checkAnswer(answer)"
+                            class="bg-blue-500 hover:bg-blue-700 text-white py-3 px-6 rounded-lg w-full text-left"
+                        >
+                            {{ answer }}
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Score -->
-            <div class="bg-white shadow-lg p-4 rounded-lg flex items-center justify-center w-1/4 h-24">
-                <p class="text-lg font-bold">Score : {{ score }}</p>
-            </div>
-        </div>
-
-        <!-- Propositions de réponses (centrées sous la question) -->
-        <div class="flex flex-col items-center">
-            <div class="space-y-4 w-3/4">
-                <button
-                    v-for="(answer, index) in questions[currentQuestionIndex].answers"
-                    :key="index"
-                    @click="checkAnswer(answer)"
-                    class="bg-blue-500 hover:bg-blue-700 text-white py-3 px-6 rounded-lg w-full text-left"
-                >
-                    {{ answer }}
+            <!-- Message de fin du quiz -->
+            <div v-if="quizFinished" class="text-center">
+                <h2 class="text-3xl font-bold mb-4">Félicitations, vous avez terminé le quiz !</h2>
+                <p class="text-xl mb-6">Votre score final est de {{ score }} sur {{ questions.length }}.</p>
+                <button @click="restartQuiz" class="bg-green-500 hover:bg-green-700 text-white py-3 px-6 rounded-lg">
+                    Rejouer
                 </button>
             </div>
+
         </div>
-    </div>
-
-    <!-- Affichage de la fin du quiz -->
-    <div v-if="quizFinished" class="text-center">
-        <h2 class="text-3xl font-bold mb-4">Félicitations, vous avez terminé le quiz !</h2>
-        <p class="text-xl mb-6">Votre score final est de {{ score }} sur {{ questions.length }}.</p>
-        <button @click="restartQuiz" class="bg-green-500 hover:bg-green-700 text-white py-3 px-6 rounded-lg">
-            Rejouer
-        </button>
-    </div>
-</div>
-
-
 
         <footers :email=true />
     </div>
@@ -105,10 +106,10 @@
                 progress: 0,
                 currentQuestionIndex: 0,
                 showBadge: false,
-                quizFinished: false, // Indicateur pour la fin du quiz
+                quizFinished: false, 
                 badge: { name: '' },
                 selectedAvatar: {
-                    name: "Guerrier",
+                    name: "Dupont",
                 },
                 questions: [
                     {
@@ -191,7 +192,7 @@
                 }
 
                 if (this.currentQuestionIndex === Math.floor(this.questions.length / 2)) {
-                    this.awardBadge("Quiz Master");
+                    this.awardBadge("Felicitation!");
                 }
             },
             restartQuiz() {
