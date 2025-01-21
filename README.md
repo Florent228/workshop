@@ -1,4 +1,4 @@
-# techwind
+# Projet scolaire
 
 ## Project setup
 ```
